@@ -1,0 +1,32 @@
+.xml                { font-family: "Courier New"; color: #000; font-size: 10pt; }
+.xml .rem           { color: #A0A0A0; }
+.xml .cdatao, .xml .cdatac
+                    { color: #A0A0A0; }
+.xml .cdata         { color: #000; }
+.xml .tag           { color: #0000FF; }
+.xml .name          { color: #AA1515; font-weight: bold; }
+.xml .attr          { color: #AA1515; }
+.xml .attr .name    { color: #FF0000; font-weight: normal; }
+.xml .attr .value   { color: #0000FF; }
+
+.js                 { font-family: "Courier New"; color: #000; font-size: 10pt; }
+.js .rem            { color: #A0A0A0; }
+.js .str            { color: #AA1515; }
+.js .re             { color: #FF0000; }
+.js .kw             { color: #0000FF; font-weight: bold; }
+.js .func           { color: #0000FF; }
+.js .gly            { font-weight: bold; }
+
+.cs                 { font-family: "Courier New"; color: #000; font-size: 10pt; }
+.cs .rem            { color: #A0A0A0; }
+.cs .str            { color: #AA1515; }
+.cs .re             { color: #FF0000; }
+.cs .kw             { color: #0000FF; font-weight: bold; }
+.cs .func           { color: #0000FF; }
+.cs .gly            { font-weight: bold; }
+
+.css                { font-family: "Courier New"; color: #000; font-size: 10pt; }
+.css .rem           { color: #A0A0A0; }
+.css .sel           { color: #AA1515; }
+.css .name          { color: #FF0000; font-weight: normal; }
+.css .value         { color: #0000FF; }

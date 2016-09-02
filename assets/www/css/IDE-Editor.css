@@ -1,0 +1,47 @@
+html{
+  overflow-x:hidden;
+}
+#loader{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:7;
+  background-color:red;
+}
+
+.code{
+  height:100%;
+}
+.psettingsinput{
+  text-align: center;
+}
+.psettingsbutton{
+  margin-bottom:0;
+}
+
+/* Разноцветные теги =D */
+red{
+  color:red;
+}
+green{
+  color:#00ff00;
+}
+blue{
+  color:blue;
+}
+dgreen{
+  color:green;
+}
+orange{
+  color:orange;
+}
+yellow{
+  color:yellow;
+}
+#errors{
+  display:block;
+  height:100%;
+  
+}
