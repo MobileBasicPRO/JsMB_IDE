@@ -2,10 +2,23 @@
 <html> 
 	<head> 
 		<title>JsMobileBasic-IDE (by PROPHESSOR)</title> 
-		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"> 
 		<link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css" />
 	  	<link rel="stylesheet" href="css/IDE-Editor.css" />
-		<link rel="stylesheet" href="css/syntax.css" />
+		  
+		<!--Code Mirror-->
+	  	<link rel="stylesheet" href="lib/codemirror.css">
+	  	<link rel="stylesheet" href="theme/3024-night.css">
+	  	<link rel="stylesheet" href="addon/hint/show-hint.css">
+
+	  <link rel="stylesheet" href="addon/display/fullscreen.css">
+	  	<script src="lib/codemirror.js"></script>
+	  	<script src="addon/hint/show-hint.js"></script>
+	  	<script src="addon/hint/anyword-hint.js"></script>
+	  	<script src="addon/edit/closebrackets.js"></script>
+	  	<script src="mode/javascript/javascript.js"></script>
+	  <script src="addon/display/fullscreen.js"></script>
+	  	<!--Code Mirror-->
 
 		<script>
 		  $Config = {
@@ -126,10 +139,49 @@
 			</div>
 			<div data-role="content">
 				<ul data-role="listview" data-inset="true" class="code" data-filter="false">
-				  <textarea rows="40" height="100%" class="JS code" id="code">
-					Сейчас пусто...
-					Воспользуйтесь шаблонов на правой панели (опции)→
-				  </textarea>
+				  <textarea style="height:auto;height:100%;" rows="40" class="code" name="code" id="code">
+// * ==================JsMobileBasic Script================= * \\
+function onMouseMove(x,y){
+	//Этот код выполнится при движении мыши
+}
+function onMouseDown(x,y){
+	//Этот код выполнится при нажатии любой клавиши мыши
+}
+function onMouseUp(x,y){
+	//Этот код выполнится при отжатии любой клавиши мыши
+}
+function onClick(x,y){
+	
+}
+function onRightClick(x,y){
+	//Этот код выполнится при правом клике
+}
+function onKeyPress(key){
+	//Этот код выполнится при нажатии клавиши на клавиатуре
+}
+function Main(){
+	//Этот код выполнится единожды при запуске
+}
+function Loop(){
+	//Этот код выполняется 10 раз в секунду (будьте осторожны!)
+}
+				</textarea>
+
+		<script>
+//		  AutorunExample();
+//function cm(){
+//alert();
+	 var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        lineNumbers: true,
+		autoCloseBrackets: true,
+		styleActiveLine: true,
+    	matchBrackets: true,
+        mode: "text/javascript"
+      });
+	  editor.setOption("theme", "3024-night");
+//}
+	 // editor.setOption("fullScreen", !editor.getOption("fullScreen")),
+		</script>
 				</ul>
 			  </div>
 		  <div data-role="footer" data-id="foo1" data-position="fixed">
@@ -152,14 +204,14 @@
 		</div>
 		<div data-role="content">
 		  <ul data-role="listview" data-inset="true" data-filter="false">
-			<input type="text" class="psettingsinput" value="Название проекта" id="pname"/>
-			<input type="text" class="psettingsinput" value="Описание проекта" id="pdesc"/>
-			<input type="text" class="psettingsinput" value="Версия проекта" id="pver"/>
-			<input type="text" class="psettingsinput" value="Автор проекта" id="pauth"/>
-			<input type="text" class="psettingsinput" value="Страничка автора" id="purl"/>
+			<input type="text" class="psettingsinput" onClick="this.value=''" value="Название проекта" id="pname"/>
+			<input type="text" class="psettingsinput" onClick="this.value=''" value="Описание проекта" id="pdesc"/>
+			<input type="text" class="psettingsinput" onClick="this.value=''" value="Версия проекта" id="pver"/>
+			<input type="text" class="psettingsinput" onClick="this.value=''" value="Автор проекта" id="pauth"/>
+			<input type="text" class="psettingsinput" onClick="this.value=''" value="Страничка автора" id="purl"/>
 			
 		  </ul>
-		  <a href="#saved" class="psettingsbutton" id="writeBtn" data-rel="popup" data-role="button" data-transition="pop">Сохранить</a>
+		  <button onClick="psaveSettings()">Сохранить</button>
 		</div>
 		<div data-role="footer" data-id="foo1" data-position="fixed">
 		  <div data-role="navbar">
@@ -239,3 +291,8 @@
 	  </div>
 	</body>
 </html>
+<!--/*
+/
+Сейчас пусто...
+Воспользуйтесь шаблонов на правой панели (опции)→
+*/-->

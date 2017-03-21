@@ -9,11 +9,6 @@ var FileAPI = {
         var text = "// ===== JsMobileBasic Script (JsMB IDE) ===== \\";
         this.writeFile("JsMB-IDE-Settings.preferences", text);
     },
-
-    events: {
-        "touchstart .readBtn"    : "readHandler",
-        "touchstart .writeBtn"   : "writeHandler"
-    },
 	output: {
 		text: "text",
 		base64: "",

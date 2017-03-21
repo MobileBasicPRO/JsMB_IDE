@@ -19,6 +19,19 @@ var $IDE = {
 		},
 		JsMB_version: $IDE.JsMB_version
 	};
+var $Native = {
+	print: function (msg)
+	{ 
+		cordova.exec(this.onSuccess, this.onFail, "Toast", "nativeAction", [msg]);
+    },
+	onSuccess:function  (result)
+	{ 
+	} ,
+	onFail: function  (error)
+	{ 
+		alert("ERROR: \r\n" + error); 
+	}
+};
 
 //Обработчики событий
 //document.addEventListener("error", logError, false);
@@ -125,7 +138,8 @@ function psaveSettings(){
 	$Project.url = purl;
 	$Project.autorun = pcode;
 	psave();	
-	navigator.notification.alert('Проект успешно сохранён!','','Сохранение','Ок');
+	//navigator.notification.alert('Проект успешно сохранён!','','Сохранение','Ок');
+	$Native.print('Проект успешно сохранён!');
 }
 
 function ploadSettings(){
@@ -185,6 +199,7 @@ function onKeyPress(code){\n    //Этот код выполнится при н
 function Main(){\n    //Этот код выполнится единожды при запуске\n}\n\n\
 function Loop(){\n    //Этот код выполняется 10 раз в секунду (будьте осторожны!)\n}';
 	code.innerHTML = example;
+	cm();
 }
 
 function doc(){
