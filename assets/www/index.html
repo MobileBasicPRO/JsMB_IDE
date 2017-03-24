@@ -1,298 +1,239 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-		<title>JsMobileBasic-IDE (by PROPHESSOR)</title> 
-		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"> 
-		<link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css" />
-	  	<link rel="stylesheet" href="css/IDE-Editor.css" />
-		  
-		<!--Code Mirror-->
-	  	<link rel="stylesheet" href="lib/codemirror.css">
-	  	<link rel="stylesheet" href="theme/3024-night.css">
-	  	<link rel="stylesheet" href="addon/hint/show-hint.css">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="orange">
+    <title>JsMobileBasic-IDE (by PROPHESSOR)</title>
+    <link rel="stylesheet" href="css/framework7.material.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="img/icon.png">
+	<link rel="stylesheet" href="css/IDE-Editor.css" />
+	<link rel="stylesheet" href="css/syntax.css" />
 
-	  <link rel="stylesheet" href="addon/display/fullscreen.css">
-	  	<script src="lib/codemirror.js"></script>
-	  	<script src="addon/hint/show-hint.js"></script>
-	  	<script src="addon/hint/anyword-hint.js"></script>
-	  	<script src="addon/edit/closebrackets.js"></script>
-	  	<script src="mode/javascript/javascript.js"></script>
-	  <script src="addon/display/fullscreen.js"></script>
-	  	<!--Code Mirror-->
+	<!--Code Mirror-->
+	<link rel="stylesheet" href="lib/codemirror.css">
+	<link rel="stylesheet" href="theme/3024-night.css">
+	<link rel="stylesheet" href="addon/hint/show-hint.css">
 
-		<script>
-		  $Config = {
-		  	mode: "html",
-			Debug_Mode: true,
-			name: "JsMobileBasic-IDE (by PROPHESSOR)"
-		  };
-		</script>
-	</head> 
-	<body> 
-	<!--div id="loader"><img src="css/images/ajax-loader.gif"></div-->
-		<div data-role="page" id="main" data-add-back-btn="true" data-theme="b">
-
-			<div data-role="header" data-theme="b" data-position="fixed">
-				<h1 onClick="info()">JsMobileBasic IDE</h1>
-			</div>
-
-			<div data-role="content">	
-				<ul data-role="listview" data-inset="true" data-filter="false">
-				  <li><a href="#" onClick="newProject()">Создать проект</a></li>
-					<li><a href="#" onclick="loadProject()">Открыть проект</a></li>
-					<!--li><a href="#build">Собрать проект</a></li-->
-					<li><a href="#" onClick="doc()">Документация</a></li>
-				  <li><a href="#update" onClick="soon()">Обновить</a></li>
-					<li><a href="#other" onClick="PhoneGapTest()">Дополнительно</a></li>
-					<li><a href="#developer" id="devtools" style="/*display:none;*/" onClick="">Режим разработчика</a></li>
-				    <li><a href="#" onClick="info()">О программе</a></li>
-					<li><a href="#" onclick="exit()">Выход</a></li>
-				</ul>
-			</div>
-
-		</div>
-<!-- Редактор -->		
-		<div data-role="page" id="editor" data-add-back-btn="true" data-theme="a">
-
-		  <div data-role="panel" data-display="overlay" data-theme="a" data-position="right" id="editorPanel">
-			<!--ul data-role="listview" data-inset="true" data-filter="false"-->
-			  <div data-role="collapsible">
-				<h1>Файл</h1>
-				<button onClick="psaveSettings();alert('Проект успешно сохранён!');">Сохранить</button>
-				<button onClick="AutorunExample()">Шаблон</button>
-				<button onClick="PhoneGapTest()">Тестировать</button>
-				</div>
-			<!--form>
-			  <div data-role="fieldcontain"-->
-				    <select name="select-native-1" class="ui-corner-none" id="select-native-1">
-				          <option>Хуки</option>
-				          <optgroup label="Обязательные">
-					            <option value="1" onClick="document.write('');">Main()</option>
-					            <option value="2">Loop()</option>
-								<option value="3">onClick(x,y)</option>
-								<option value="4">onRightClick(x,y)</option>
-					            <option value="5">onMouseMove(x,y)</option>
-					            <option value="6">onMouseDown(x,y)</option>
-								<option value="7">onMouseUp(x,y)</option>
-								<option value="8">onKeyPress(key)</option>
-								<option value="9">onKeyDown(key)</option>
-								<option value="10">onKeyUp(key)</option>
-					        </optgroup>
-				          <optgroup label="Необязательные">
-					            <option value="5">onReady()</option>
-					            <option value="6">onResize()</option>
-					            <option value="7">onChangeOrientation(o)</option>
-					        </optgroup>
-				      </select>
-			<div data-role="collapsible">
-			  <h1>Операторы</h1>
-			<select name="select-native-2" class="ui-corner-none" id="select-native-2">
-			          <option>Основные</option>
-				      <option value="1">include(file)</option>
-				      <option value="2">if(){}else{}</option>
-					  <option value="3">for(i=0;;i++){}</option>
-					  <option value="4">while(){}</option>
-					  <option value="5">try{}catch(e){}</option>
-					  <option value="6">switch(){case '':break;}</option> <!--count-->
-					  <option value="7">input('text')</option>
-					  <option value="8">alert('text')</option>
-			      </select>
-			  <select name="select-native-2" class="ui-corner-none" id="select-native-2">
-				    <option>Графические</option>
-				<optgroup label="Настройка">
-				    <option value="1">setColor(color)</option>
-					<option value="2">setLineWidth(width)</option>
-					<option value="3">setFont(family)</option>
-					<option value="4">setFontSize(size)</option>
-				</optgroup>
-				<optgroup label="Рисование">
-				  <option value="5">cls()</option>
-				  <option value="6">fillScreen(color)</option>
-				  <option value="7">drawRect(x,y,w,h)</option>
-				  <option value="8">fillRect(x,y,w,h)</option>
-				  <option value="9">clearRect(x,y,w,h)</option>
-				  <option value="10">drawPlot(x,y)</option>
-				  <option value="11">drawLine(x,y,x1,y1)</option>
-				  <option value="12">drawString(string,x,y)</option>
-				  <option value="13">drawArc(x,y,r,startAngle,endAngle,direction)</option>
-				  <option value="14">fillArc(x,y,r,startAngle,endAngle,direction)</option>
-				  <option value="15">drawTriangle(x,y,x1,y1,x2,y2)</option>
-				  <option value="16">fillTriangle(x,y,x1,y1,x2,y2)</option>
-				  <option value="17">drawRect4(x,y,x1,y1,x2,y2,x3,y3)</option>
-				  <option value="18">drawRect4(x,y,x1,y1,x2,y2,x3,y3)</option>
-				  <option value="19">drawCube(x,y,w,h,q)</option>
-				</optgroup>
-				<optgroup label="Градиенты">
-				  <option value="20"> = makeLinearGradient(x,y,x1,y1)</option>
-				  <option value="21"> = makeRadialGradient(x,y,r,x1,y1,r1)</option>
-				  <option value="22">setGradientColor(gradient,num,color)</option>
-				</optgroup>
-				</select>
-			</div>
-			  <!--/div>
-			</form-->
-				</div>
-			<div data-role="header" data-theme="a" data-position="fixed">
-			  <a href="#main">Назад</a>
-			  <h1>JsMobileBasic IDE -> Редактор</h1>
-			  <a href="#editorPanel">Опции</a>
-			</div>
-			<div data-role="content">
-				<ul data-role="listview" data-inset="true" class="code" data-filter="false">
-				  <textarea style="height:auto;height:100%;" rows="40" class="code" name="code" id="code">
-// * ==================JsMobileBasic Script================= * \\
-function onMouseMove(x,y){
-	//Этот код выполнится при движении мыши
-}
-function onMouseDown(x,y){
-	//Этот код выполнится при нажатии любой клавиши мыши
-}
-function onMouseUp(x,y){
-	//Этот код выполнится при отжатии любой клавиши мыши
-}
-function onClick(x,y){
-	
-}
-function onRightClick(x,y){
-	//Этот код выполнится при правом клике
-}
-function onKeyPress(key){
-	//Этот код выполнится при нажатии клавиши на клавиатуре
-}
-function Main(){
-	//Этот код выполнится единожды при запуске
-}
-function Loop(){
-	//Этот код выполняется 10 раз в секунду (будьте осторожны!)
-}
-				</textarea>
-
-		<script>
-//		  AutorunExample();
-//function cm(){
-//alert();
-	 var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        lineNumbers: true,
-		autoCloseBrackets: true,
-		styleActiveLine: true,
-    	matchBrackets: true,
-        mode: "text/javascript"
-      });
-	  editor.setOption("theme", "3024-night");
-//}
-	 // editor.setOption("fullScreen", !editor.getOption("fullScreen")),
-		</script>
+	<link rel="stylesheet" href="addon/display/fullscreen.css">
+	<!--Code Mirror-->
+  </head>
+  <body onselectstart="return false;" class="theme-bluegray layout-dark"><!--bluegray-->
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel panel-left panel-cover panel-swipable">
+      <div ontouchmove="return false;" class="view navbar-fixed">
+        <div class="pages">
+          <div data-page="panel-left" class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="center">Документация</div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="content-block">
+              </div>
+              <div class="content-block-title">Разделы приложен<span class="open-popover">ия:</span></div>
+              <div class="list-block">
+                <ul>
+				  <li><a href="#" data-popup=".settings-popup" class="item-link close-panel open-popup">
+                      <div class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Настройки</div>
+                        </div>
+                      </div></a></li>
+				  <li><a href="about.html" class="item-link close-panel">
+                      <div class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">О программе</div>
+                        </div>
+                      </div></a></li>
+                </ul>
+              </div>
+              <div class="content-block">
+                <p><center><a href="#" onclick="gotoURL('http://vk.com/jsmobilebasic')">JsMobileBasic</a><br/>
+				  <a href="#" onclick="gotoURL('http://vk.com/prophessor')">&copy; PROPHESSOR 2017</a>
+				</center></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--/panel-->
+    <div class="views">
+      <div class="view view-main">
+        <div class="pages navbar-fixed">
+          <div data-page="index" class="page">
+            <div ontouchmove="return false;" class="navbar">
+              <div class="navbar-inner">
+                <!--<div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>-->
+                <div class="center" align="center" onclick="about()">JsMobileBasic IDE</div>
+              </div>
+            </div><a href="#" class="floating-button color-orange open-popover"><i class="icon icon-plus"></i></a>
+            <div class="page-content">
+              <div class="content-block-title">Добро пожаловать JsMobileBasic IDE</div>
+              <!--div class="content-block"><a href="about.html" class="button button-raised">Что такое JsMobileBasic?</a></div-->
+              <div class="content-block-title"></div>
+              <div class="list-block">
+                <ul>
+				  <li><a href="project.html" id="return-project" style="display:none;" class="item-link">
+					  <div class="item-content">
+                        <div class="item-media"><i class="icon icon-pencil"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Продолжить</div>
+						</div>
+					  </div>
+					</a></li>
+				  <li><a href="#" onClick="newProject()" id="newProject" class="item-link">
+					  <div class="item-content">
+                        <div class="item-media"><i class="icon icon-file"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Создать проект</div>
+						</div>
+					  </div>
+				  </a></li>
+				  <li><a href="#" onclick="loadProject()" class="item-link">
+					  <div class="item-content">
+                        <div class="item-media"><i class="icon icon-folder-open"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Открыть проект</div></div></div></a></li>
+				  <!--li><a href="#build">Собрать проект</a></li-->
+				  <li><a href="#" onClick="doc()" class="item-link">
+					  <div class="item-content">
+                        <div class="item-media"><i class="icon icon-question-sign"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Документация</div></div></div></a></li>
+				  <li><a href="#" onClick="soon()" class="item-link">
+					  <div class="item-content">
+                        <div class="item-media"><i class="icon icon-refresh"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Обновить</div>
+						</div>
+					  </div>
+				  </a></li>
+				  <!--<li><a href="#other" onClick="PhoneGapTest()" class="item-link">
+					  <div class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Дополнительно</div></div></div></a></li>-->
+				  <li><a href="#" onClick="about()" class="item-link">
+					  <div class="item-content">
+                        <div class="item-media"><i class="icon icon-bell"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">О программе</div></div></div></a></li>
+				  <li><a href="#" onclick="exit()" class="item-link">
+				  <div class="item-content">
+                        <div class="item-media"><i class="icon icon-remove"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Выход</div></div></div></a></li>
 				</ul>
 			  </div>
-		  <div data-role="footer" data-id="foo1" data-position="fixed">
-			<div data-role="navbar">
-			  <ul>
-				<li><a href="#editor" class="ui-btn-active ui-state-persist">Редактор</a></li>
-				<li><a href="#psettings">Настройки проекта</a></li>
-				<li><a href="#pman">Менеджер проекта</a></li>
-				<li><a href="#pdebug" onClick="soon()">Отладка</a></li>
-			  </ul>
-			</div><!-- /navbar -->
-		  </div><!-- /footer -->
-		</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--POPUP-->
+    <!--Console-->
+	<div class="popup console-popup">
+      <div class="view navbar-fixed">
+        <div class="pages">
+          <div class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="link close-popup">Закрыть</a></div>
+                <div class="center">Консоль отладки</div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="content-block">
+				<div id="console"></div><p><br/></p>
+				<input type="text" id="consoleinput" autofocus placeholder="Eval" style="position:absolute;bottom:38px;width:100%;"/>
+				<a href="#" type="submit" style="position:fixed;bottom:0; width:100%;" class="button button-raised" onclick="t = 'consoleinput';log('$<blue>'+document.getElementById(t).value+'</blue>');eval(document.getElementById('consoleinput').value)">Выполнить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<div class="popup settings-popup">
+      <div class="view navbar-fixed">
+        <div class="pages">
+          <div class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="link close-popup">Закрыть</a></div>
+                <div class="center">Настройки</div>
+              </div>
+            </div>
+            <div class="page-content">
+			  <div class="content-block-title">Основные настройки</div>
+			  <div class="content-block">
+				<div class="list-block inputs-list">
+				  <ul>
+					<li><a href="#" class="button button-raised" onclick="checkupdate()">Проверить обновления</a></li>
+				  </ul>
+				</div>
+			  </div>
+			  <!--</div>-->
 
-<!-- Настройки проекта -->		
-	  <div data-role="page" id="psettings" data-add-back-btn="true" data-theme="a">
-		<div data-role="header" data-theme="a" data-position="fixed">
-		  <a href="#main">Назад</a>
-		  <h1>JsMobileBasic IDE -> Настройки проекта</h1>
-		</div>
-		<div data-role="content">
-		  <ul data-role="listview" data-inset="true" data-filter="false">
-			<input type="text" class="psettingsinput" onClick="this.value=''" value="Название проекта" id="pname"/>
-			<input type="text" class="psettingsinput" onClick="this.value=''" value="Описание проекта" id="pdesc"/>
-			<input type="text" class="psettingsinput" onClick="this.value=''" value="Версия проекта" id="pver"/>
-			<input type="text" class="psettingsinput" onClick="this.value=''" value="Автор проекта" id="pauth"/>
-			<input type="text" class="psettingsinput" onClick="this.value=''" value="Страничка автора" id="purl"/>
-			
-		  </ul>
-		  <button onClick="psaveSettings()">Сохранить</button>
-		</div>
-		<div data-role="footer" data-id="foo1" data-position="fixed">
-		  <div data-role="navbar">
-			<ul>
-			  <li><a href="#editor">Редактор</a></li>
-			  <li><a href="#psettings" class="ui-btn-active ui-state-persist">Настройки проекта</a></li>
-			  <li><a href="#pman">Менеджер проекта</a></li>
-			  <li><a href="#pdebug" onClick="soon()">Отладка</a></li>
-			</ul>
-		  </div><!-- /navbar -->
-		</div><!-- /footer -->
-	  </div>
-	  
-<!-- Менеджер проекта -->		
-	  <div data-role="page" id="pman" data-add-back-btn="true" data-theme="a">
-		<div data-role="header" data-theme="a" data-position="fixed">
-		  <a href="#main">Назад</a>
-		  <h1>JsMobileBasic IDE -> Менеджер проекта</h1>
-		</div>
-		<div data-role="content">
-		  <div data-role="controlgroup" id="flist">
-			<label for="fselect-0">Autorun.bas</label>
-			<input type="radio" name="fselect" checked="checked" value="on" id="fselect-0">
-		  </div>
-			<button class="psettingsbutton" onClick="newFile()">Новый файл</button>
-		</div>
-		<div data-role="footer" data-id="foo1" data-position="fixed">
-		  <div data-role="navbar">
-			<ul>
-			  <li><a href="#editor">Редактор</a></li>
-			  <li><a href="#psettings">Настройки проекта</a></li>
-			  <li><a href="#pman" class="ui-btn-active ui-state-persist">Менеджер проекта</a></li>
-			  <li><a href="#pdebug" onClick="soon()">Отладка</a></li>
-			</ul>
-		  </div><!-- /navbar -->
-		</div><!-- /footer -->
-	  </div>
-<!-- Документация -->
-	  <div data-role="page" id="doc" data-add-back-btn="true" data-theme="a">
-		<div data-role="header" data-position="fixed" data-theme="a">
-		  <a href="#main">Назад</a>
-		  <h1>JsMobileBasic-IDE - Документация</h1>
-		</div>
-		<iframe src="http://vk.com/JsMobileBasic/" style="width:100%;height:100%;">Ваша версия Android устарела!</iframe>
-	  </div>
-
-<!-- Dev Tools -->	  
-	  <div data-role="page" id="developer" data-add-back-btn="true" data-theme="a">
-		<div data-role="header" data-position="fixed" data-theme="a">
-		  <a href="#main">Назад</a>
-		  <h1>JsMB-IDE → <red>Инструменты разработчика</red></h1>
-		</div>
-		<div data-role="content">
-		  <h2>Получить значение</h2>
-		  <input id="getinput" data-clear-btn="true" value="$IDE">
-		  <button onClick="devget()">Получить</button>
-		  <h2>Eval консоль</h2>
-		  <input id="evalinput" data-clear-btn="true" value="alert('Created by PROPHESSOR =)\nvk.com/prophessor');">
-		  <button onClick="try{eval(document.getElementById('evalinput').value);}catch(e){logError('Ошибка! '+e);}">Выполнить</button>
-		  <h2>Ошибки</h2>
-		  <div id="errors">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+	<div class="picker-modal oper-picker">
+      <div class="toolbar">
+        <div class="toolbar-inner">
+          <div class="left"></div>
+          <div class="right"><a href="#" class="link close-picker">Закрыть</a></div>
+        </div>
+      </div>
+      <div class="picker-modal-inner">
+        <div class="content-block">
+		  <div class="list-block">
+		  	<ul>
+				<li><a href="#" class="item-link list-button">kdk</a></li>
+		  	</ul>
 		  </div>
 		</div>
-<!-- POPUPS -->
-		<div data-role="popup" id="saved">
-		      <p>Проект успешно сохранён <green>;)</green></p>
-		</div>
-		
-		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="js/cordova.js"></script>
-		<script type="text/javascript" src="MobileBasic.dll"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/syntax.js"></script>	
-	  	<script type="text/javascript" src="js/FileAPI.js"></script>
+      </div>
+    </div>
+	
+    <div class="popover popover-menu">
+      <div class="popover-inner">
+        <div class="list-block">
+          <ul>
+            <li><a href="#" data-popup=".console-popup" class="list-button item-link open-popup close-popover">Консоль отладки</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/framework7.js"></script>
+	<script type="text/javascript" src="js/cordova.js"></script>
+	<script type="text/javascript" src="js/FileAPI.js"></script>
+	<script type="text/javascript" src="js/my-app.js"></script>
 
-	  <script type="text/javascript" src="js/jquery.mobile-1.3.0.min.js"></script>	  
-	  </div>
-	</body>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<!--Code Mirror-->
+
+	<script src="lib/codemirror.js"></script>
+	<script src="addon/hint/show-hint.js"></script>
+	<script src="addon/hint/anyword-hint.js"></script>
+	<script src="addon/edit/closebrackets.js"></script>
+	<script src="mode/javascript/javascript.js"></script>
+	<script src="addon/display/fullscreen.js"></script>
+	
+	<script type="text/javascript" src="js/syntax.js"></script>
+  </body>
 </html>
-<!--/*
-/
-Сейчас пусто...
-Воспользуйтесь шаблонов на правой панели (опции)→
-*/-->

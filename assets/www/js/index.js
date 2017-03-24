@@ -1,3 +1,4 @@
+
 var $IDE = {
 	version: '0.1',
 	projectName: 'project1',
@@ -158,17 +159,17 @@ function newFile(){
 	var name = prompt('Введите имя файла (только имя)');
 	if(name){
 		var flist = document.getElementById('flist');
-	/*	var label = document.createElement('label');
-		var input = document.createElement('input');*/
+//		var label = document.createElement('label');
+//		var input = document.createElement('input');
 		var count = 1;
-	/*	label.setAtribute('for','fselect-'+count);
-		label.innerHTML += name+'.bas';
-		input.type="radio";
-		input.name = 'fselect';
-		input.id = "fselect-"+count;
-		flist.appendChild(label);
-		flist.appendChild(input);
-	*/
+//		label.setAtribute('for','fselect-'+count);
+//		label.innerHTML += name+'.bas';
+//		input.type="radio";
+//		input.name = 'fselect';
+//		input.id = "fselect-"+count;
+//		flist.appendChild(label);
+//		flist.appendChild(input);
+//	
 		flist.innerHTML += '<label for="fselect-"'+count+'>'+name+'.bas</label>';
 		flist.innerHTML += '<input type="radio" name="fselect" value="on" id="fselect-'+count+'"/>';
 		logError(flist.innerHTML);
