@@ -8,7 +8,8 @@ var $IDE = {
 //	JsMB_version: $JsMobileBasic.version
 	project:{
 		bar:1,
-		open:false
+		open:false,
+		current_file:"Autorun.bas"
 	}
 },
 	$Project = {
@@ -17,9 +18,9 @@ var $IDE = {
 		version:'1.0',
 		description:'Test project',
 		url: 'vk.com/JsMobileBasic',
-		autorun:'',
 		files:{
-			$list:''
+			"Autorun.bas":"// * ==================JsMobileBasic Script================= * \\\\ \n\nfunction Main() {\n//Этот код выполнится единожды при запуске\nprintln($JsMobileBasic.name);\nprintln($JsMobileBasic.version);\n}\n\n\nfunction Loop() {\n\n//Этот код выполняется 10 раз в секунду (будьте осторожны!)\n}"
+			/*"file":"data"*/
 		},
 //		JsMB_version: $IDE.JsMB_version
 	};
@@ -61,6 +62,8 @@ $$$.onPageInit('project', function (page) {
 	  $$('#pauth').val($Project.author);
 	  $$('#pdesc').val($Project.description);
 	  $$('#purl').val($Project.url);
+	  loadFiles();
+	  $IDE.project.current_file = "Autorun.bas";
 });
 //API
 function alert(text){
@@ -140,30 +143,24 @@ var $Native = {
 	} ,
 	onFail: function  (error)
 	{ 
-		alert("ERROR: \r\n" + error); 
+		error(error); 
 	}
 };
 
 function toggleBar(){
-	if($IDE.project.bar){
+	if($IDE.project.bar == 1){
 		$IDE.project.bar = 0;
 		$$('#project-float-img')[0].className = "icon icon-plus";
 		$$('.hides').hide();
 	}else{
 		$IDE.project.bar = 1;
 		$$('#project-float-img')[0].className = "icon icon-minus";
-		$$('.hides').show();
+		$$('.hides').show();	
 	}
 }
 
 function about(){
-//	$IDE.devCounter++;
-	alert('JsMobileBasic IDE <br/>'+/*device.platform+*/'<br/>version: '+$IDE.version+'<br/>by PROPHESSOR');
-//	if($IDE.devCounter >= 7){
-//		info = function(){
-//			window.location.hash = '#developer';
-//		};
-//	};
+	alert('JsMobileBasic IDE <br/>'+/*/device.platform+/*/'<br/>version: '+$IDE.version+'<br/>by PROPHESSOR');
 };
 
 //Создание проекта
@@ -173,10 +170,6 @@ function newProject(){
 		$IDE.project = filename;
 		$IDE.projectFile = filename+'.mbp';
 		$Project.name = filename;
-		$Project.version = "1.0";
-		$Project.description = "";
-		$Project.author = "MobileBasicPRO";
-		$Project.url = "http://vk.com/JsMobileBasic";
 		mainView.loadPage('project.html');
 		$$('#title').html($Project.name);
 		$$('#pname').val($Project.name);
@@ -205,6 +198,15 @@ function loadProject(){
 	});
 
 };
+
+function package_json(){
+	var tmp = {
+		author:$Project.author
+	};
+	var json = toJSON(tmp);
+	FileAPI.writeFile("package.json",json);
+}
+
 //Project#1
 
 function AutorunExample(){
@@ -215,29 +217,51 @@ function Loop(){\n    //Этот код выполняется в цикле\n}'
 }
 
 //Project#3
-function newFile(){
+function newFile(file){
+	if(typeof file === "undefined"){
 	$$$.prompt('Введите имя файла (только имя)',function(e){
 		if(e != ''){
-			$$('#filelist')[0].innerHTML+='<li><div class="item-content"><div class="item-media"><i class="icon icon-f7"></i></div><div class="item-inner"><div class="item-title">'+e+'.bas</div></div></div></li>';
+			$$('#filelist')[0].innerHTML+='<li><a href="#" class="item-link" onclick="checkFile(this)"><div class="item-content"><div class="item-media"><i class="icon icon-file"></i></div><div class="item-inner"> <div class="item-title">'+e+'.bas</div></div></div></a></li>';
+			$Project.files[e+'.bas']="// * ==================JsMobileBasic Script================= * \\";
 		}
 	});
+	}else{
+		$$('#filelist')[0].innerHTML+='<li><a href="#" class="item-link" onclick="checkFile(this)"><div class="item-content"><div class="item-media"><i class="icon icon-file"></i></div><div class="item-inner"> <div class="item-title">'+file+'.bas</div></div></div></a></li>';
+		
+	}
 };
 
+function openFile(){
+	$$('#code').val($Project.files[$IDE.project.current_file]);
+};
+
+function saveFile(){
+	$Project.files[$IDE.project.current_file] = $$('#code').val();
+	psave();
+}
+
+function checkFile(el){
+	var file = el.getElementsByClassName('item-title')[0];
+	$IDE.project.current_file = file.innerHTML;
+	var li = el.parentNode.parentNode.getElementsByClassName('item-title');
+	log(li.innerHTML);
+	for(i in li){
+		$$(li[i]).removeClass('checked');
+	}
+	$$(file).addClass('checked');
+	openFile();
+}
+
+function loadFiles(){
+	
+}
 
 function exit(){
 	$$$.confirm('Подтвердите выход',function(){
 		window.close();
 	});
 };
-/*
-function PhoneGapTest(){
-	debugFunction();
-};
 
-function obj(text){
-	alert(toJSON(text));
-};
-*/
 //Сохранение/открытие проекта
 function psave(){
 	var project = toJSON($Project);
@@ -264,7 +288,7 @@ function psaveSettings(){
 		pdesc = $$('#pdesc').val(),
 		pauth = $$('#pauth').val(),
 		pver = $$('#pver').val(),
-		purl = $$('#purl').val();
+		purl = $$('#purl').val(),
 		pcode = $$('#code').val();
 	$Project.name = pname;
 	$Project.author = pauth;
@@ -289,15 +313,6 @@ function ploadSettings(){
 /*
 // Менеджер проекта
 
-function devget(){
-	var input = document.getElementById('getinput').value;
-	try{
-	alert(toJSON(eval(input)) || eval(input));
-	}catch(e){
-		logError(e);
-		//logError();
-	}
-}
 
 function doc(){
 	iab = window.open('http://vk.com/JsMobileBasic', '_blank ', 'location = yes ');
@@ -316,4 +331,12 @@ function doc(){
 function showSplash(mode){
 	mode ? navigator.splashscreen.show() : navigator.splashscreen.hide();
 }
+*/
+
+
+/*
+Идеи по поводу автодополнения:
+
+Functions function [] {} () ; 
+
 */

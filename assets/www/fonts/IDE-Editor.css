@@ -21,11 +21,6 @@ html{
 .notifications.list-block > ul{
   background-color:#323232 !important;
 }
-
-.checked{
-  color:yellow;
-  font-weight:bold;
-}
 /* Разноцветные теги =D */
 red{
   color:red;

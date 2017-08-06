@@ -2,12 +2,12 @@
   <div class="view view-main">
 	<div ontouchmove="return true;" class="pages navbar-fixed">		  
 	  <div data-page="project" class="page toolbar-fixed"><div class="hides">
-		<div class="navbar">
-		  <div class="navbar-inner hides">
-			<div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
-			<div id="title" onclick="alert();">{Project name}</div>
-		  </div>
-		</div></div>
+		  <div class="navbar">
+			<div class="navbar-inner hides">
+			  <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+			  <div id="title" onclick="alert();">{Project name}</div>
+			</div>
+		  </div></div>
 		<div class="toolbar hides tabbar">
 		  <div class="toolbar-inner">
 			<a href="#tab1" class="tab-link active">Редактор</a>
@@ -16,35 +16,23 @@
 		  </div>
 		</div>
 		<!--div class="toolbar toolbar-bottom hides" id="project-bar">
-		  <div class="toolbar-inner">
-			<a href="#tab-1" class="link open-oper-picker"><i class="icon icon-pencil"></i></a>
-			<a href="#tab-2" class="link"><i class="icon icon-save"></i></a>
-			<!--<a href="#tab-3" class="link"><i class="icon ks-icon-upload"></i></a>-->
-			<!--<a href="#tab-1" class="link">Text Link</a>-->
-		  <!--</div>-->
+		<div class="toolbar-inner">
+		<a href="#tab-1" class="link open-oper-picker"><i class="icon icon-pencil"></i></a>
+		<a href="#tab-2" class="link"><i class="icon icon-save"></i></a>
+		<!--<a href="#tab-3" class="link"><i class="icon ks-icon-upload"></i></a>-->
+		<!--<a href="#tab-1" class="link">Text Link</a>-->
 		<!--</div>-->
-<!--Float-->
-		<a href="#" onclick="toggleBar()" class="floating-button color-bluegray"><i id="project-float-img" class="icon icon-minus"></i></a>
+		<!--</div>-->
+		<!--Float-->
+		<a href="#" onclick="toggleBar();" class="floating-button color-bluegray"><i id="project-float-img" class="icon icon-minus"></i></a>
 
 		<div class="tabs-swipeable-wrap">
 		  <div class="tabs">
 			<div id="tab1" class="page-content tab active">
 			  <div class="content-block-title"></div>
 			  <div style="margin-top:-8%;" class="content-block">
-				<textarea style="width:100%;height:100%;" rows="40" class="code" name="code" id="code">
-// * ==================JsMobileBasic Script================= * \\
+				<textarea style="width:100%;height:10vh;" class="code" name="code" id="code"></textarea>				
 
-function Main() {
-	//Этот код выполнится единожды при запуске
-	println($JsMobileBasic.name);
-	println($JsMobileBasic.version);
-}
-
-function Loop() {
-	//Этот код выполняется 10 раз в секунду (будьте осторожны!)
-}
-</textarea>				
-				
 			  </div>
 			</div>
 			<div id="tab2" class="page-content tab">
@@ -111,8 +99,8 @@ function Loop() {
 					  </div>
 					</li>
 					<li><a href="#" onclick="psaveSettings()" class="button button-raised item-link">Применить</a></li>
-				</ul>
-				  </div>
+				  </ul>
+				</div>
 				<br/><br/>
 			  </div>
 			</div>
@@ -121,14 +109,14 @@ function Loop() {
 				<div class="content-block-title">Файлы проекта:</div>
 				<div class="list-block">
 				  <ul id="filelist">
-					<li>
-					  <div class="item-content">
-						<div class="item-media"><i class="icon icon-f7"></i></div>
-						<div class="item-inner"> 
-						  <div class="item-title">Autorun.bas</div>
+					<li><a href="#" class="item-link" onclick="checkFile(this)">
+						<div class="item-content">
+						  <div class="item-media"><i class="icon icon-file"></i></div>
+						  <div class="item-inner"> 
+							<div class="item-title checked">Autorun.bas</div>
+						  </div>
 						</div>
-					  </div>
-					</li>
+					  </a></li>
 				  </ul>
 				  <a href="#" class="button button-raised item-link" onclick="newFile()">Новый файл</a>
 				</div>
