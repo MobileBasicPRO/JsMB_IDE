@@ -77,7 +77,7 @@
             <div ontouchmove="return false;" class="navbar">
               <div class="navbar-inner">
                 <!--<div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>-->
-                <div class="center" align="center" onclick="about()">JsMobileBasic IDE</div>
+                <div class="center" align="center" onclick="App.about()">JsMobileBasic IDE</div>
               </div>
             </div><a href="#" class="floating-button color-orange open-popover"><i class="icon icon-plus"></i></a>
             <div class="page-content">
@@ -94,7 +94,7 @@
 						</div>
 					  </div>
 					</a></li>
-				  <li><a href="#" onClick="newProject()" id="newProject" class="item-link">
+				  <li><a href="#" onClick="Project.new()" id="newProject" class="item-link">
 					  <div class="item-content">
                         <div class="item-media"><i class="icon icon-file"></i></div>
                         <div class="item-inner">
@@ -102,7 +102,7 @@
 						</div>
 					  </div>
 				  </a></li>
-				  <li><a href="#" onclick="loadProject()" class="item-link">
+				  <li><a href="#" onclick="Project.load()" class="item-link">
 					  <div class="item-content">
                         <div class="item-media"><i class="icon icon-folder-open"></i></div>
                         <div class="item-inner">
@@ -126,12 +126,12 @@
                         <div class="item-media"><i class="icon icon-f7"></i></div>
                         <div class="item-inner">
                           <div class="item-title">Дополнительно</div></div></div></a></li>-->
-				  <li><a href="#" onClick="about()" class="item-link">
+				  <li><a href="#" onClick="App.about()" class="item-link">
 					  <div class="item-content">
                         <div class="item-media"><i class="icon icon-bell"></i></div>
                         <div class="item-inner">
                           <div class="item-title">О программе</div></div></div></a></li>
-				  <li><a href="#" onclick="exit()" class="item-link">
+				  <li><a href="#" onclick="App.exit()" class="item-link">
 				  <div class="item-content">
                         <div class="item-media"><i class="icon icon-remove"></i></div>
                         <div class="item-inner">
@@ -224,7 +224,7 @@
     <script type="text/javascript" src="js/framework7.js"></script>
 	<script type="text/javascript" src="js/cordova.js"></script>
 	<script type="text/javascript" src="js/FileAPI.js"></script>
-	<script type="text/javascript" src="js/my-app.js"></script>
+	<script type="text/javascript" src="js/ide.js"></script>
 
 	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 	<!--Code Mirror-->

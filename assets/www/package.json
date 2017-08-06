@@ -1,0 +1,29 @@
+{
+  "name": "jsmbide",
+  "version": "1.0.0",
+  "description": "You can open JsMB IDE from JsMB Interpreter =)",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "jsmb ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PROPHESSOR/JsMB_IDE.git"
+  },
+  "keywords": [
+    "JsMB",
+    "JsMobileBasic",
+    "JsMB_IDE",
+    "PROPHESSOR",
+    "MobileBasicPRO"
+  ],
+  "author": "PROPHESSOR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PROPHESSOR/JsMB_IDE/issues"
+  },
+  "homepage": "https://github.com/PROPHESSOR/JsMB_IDE#readme"
+}

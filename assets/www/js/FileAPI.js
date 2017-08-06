@@ -1,3 +1,11 @@
+/*  ********************************
+    Danger! This library is too old!
+/*  ******************************** */
+
+
+
+
+
 //alert('loading File API...');
 try{
 //window.FileView = window.PagedView.extend(

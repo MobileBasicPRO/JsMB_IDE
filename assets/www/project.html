@@ -24,7 +24,7 @@
 		<!--</div>-->
 		<!--</div>-->
 		<!--Float-->
-		<a href="#" onclick="toggleBar();" class="floating-button color-bluegray"><i id="project-float-img" class="icon icon-minus"></i></a>
+		<a href="#" onclick="App.toggleBar();" class="floating-button color-bluegray"><i id="project-float-img" class="icon icon-minus"></i></a>
 
 		<div class="tabs-swipeable-wrap">
 		  <div class="tabs">
@@ -98,7 +98,7 @@
 						</div>
 					  </div>
 					</li>
-					<li><a href="#" onclick="psaveSettings()" class="button button-raised item-link">Применить</a></li>
+					<li><a href="#" onclick="Project.Settings.save()" class="button button-raised item-link">Применить</a></li>
 				  </ul>
 				</div>
 				<br/><br/>
@@ -109,7 +109,7 @@
 				<div class="content-block-title">Файлы проекта:</div>
 				<div class="list-block">
 				  <ul id="filelist">
-					<li><a href="#" class="item-link" onclick="checkFile(this)">
+					<li><a href="#" class="item-link" onclick="Project.file.check(this)">
 						<div class="item-content">
 						  <div class="item-media"><i class="icon icon-file"></i></div>
 						  <div class="item-inner"> 
@@ -118,7 +118,7 @@
 						</div>
 					  </a></li>
 				  </ul>
-				  <a href="#" class="button button-raised item-link" onclick="newFile()">Новый файл</a>
+				  <a href="#" class="button button-raised item-link" onclick="Project.Files.new()">Новый файл</a>
 				</div>
 				<br/><br/>
 			  </div>
