@@ -40,14 +40,14 @@ $$$.onPageInit('project', function (page) {
 		$$$.pickerModal('.oper-picker');
 	});
 
-	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+	/*var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
 		lineNumbers: true,
 		autoCloseBrackets: true,
 		styleActiveLine: true,
 		matchBrackets: true,
 		mode: "text/javascript"
 	});
-	editor.setOption("theme", "3024-night");
+	editor.setOption("theme", "3024-night");*/
 
 	$$('#title').html($Project.name);
 	$$('#pname').val($Project.name);
@@ -122,9 +122,9 @@ $$$.onPageInit('project', function (page) {
 		}
 	}
 
-	function gotoURL(url){
+	function gotoURL(url) {
 		//TODO: Write me!
-		log("gotoURL "+url);
+		log("gotoURL " + url);
 	}
 
 	// console.log = log;
@@ -171,15 +171,31 @@ var App = {
 
 var Keyboard = {
 	_state: false,
-	
-	toggle:function(){
+
+	init: function() {
+		$(".kbbtn").on("click", function() {
+			var id = $(this).data("keyid");
+			Keyboard.key(id);
+		});
+	},
+
+	toggle: function () {
 		log("Keyboard=>Toggle");
 		this._state = !this._state;
 		$$$.pickerModal('.keyboard-modal');
 	},
-	
-	key:function(key){
+
+	key: function (key) {
 		//TODO: Распознавания нажатия клавиш
+		switch(key) {
+			case "var":
+				Keyboard.put("var ");
+			break;
+		}
+	},
+
+	put:function(text){
+		$("#code").append(text);
 	}
 };
 
@@ -329,16 +345,16 @@ function Loop(){\n    //Этот код выполняется в цикле\n}'
 // Менеджер проекта
 
 */
-function doc(){
+function doc() {
 	iab = window.open('http://vk.com/JsMobileBasic', '_blank ', 'location = yes,zoom=no');
-    //iab.addEventListener('loadstart', loadStart);
-    //iab.addEventListener('loadstop', loadStop);
-    iab.addEventListener('loaderror', function(){
+	//iab.addEventListener('loadstart', loadStart);
+	//iab.addEventListener('loadstop', loadStop);
+	iab.addEventListener('loaderror', function () {
 		logError('Ошибка сети! <yellow>Принимаю меры безопасности против вылета IDE!</yellow>');
-		alert('Возникла ошибка сети при загрузке документации!\nПроверте ваше сетевое подключение.','','Ошибка сети','Назад');
+		alert('Возникла ошибка сети при загрузке документации!\nПроверте ваше сетевое подключение.', '', 'Ошибка сети', 'Назад');
 		window.location.hash = '#main';
 	});
-    iab.addEventListener('exit', function (){
+	iab.addEventListener('exit', function () {
 		window.location.hash = '#main';
 	});
 }/*
