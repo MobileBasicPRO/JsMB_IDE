@@ -155,9 +155,12 @@ var App = {
 	cordova: !!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/),
 
 	init: function () {
-		if(!this.cordova) this.ready();
+		log("App.init()");
+		if(!App.cordova) App.ready();
 	},
-	ready: function () {},
+	ready: function () {
+		log("App.ready()");
+	},
 	about: function () {
 		alert('JsMobileBasic IDE <br/>' + /*/device.platform+/*/ '<br/>version: ' + $IDE.version + '<br/>by PROPHESSOR');
 	},
@@ -366,6 +369,11 @@ function doc() {
 		window.location.hash = '#main';
 	});
 }
+
+
+$$(document).on("load", App.init);
+$$(document).on("ready", App.ready);
+
 /*
 
 function showSplash(mode){
