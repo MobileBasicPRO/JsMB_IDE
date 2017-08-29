@@ -1,142 +1,152 @@
 <div class="views">
-  <div class="view view-main">
-	<div ontouchmove="return true;" class="pages navbar-fixed">		  
-	  <div data-page="project" class="page toolbar-fixed"><div class="hides">
-		  <div class="navbar">
-			<div class="navbar-inner hides">
-			  <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
-			  <div id="title" onclick="alert();">{Project name}</div>
-			</div>
-		  </div></div>
-		<div class="toolbar hides tabbar">
-		  <div class="toolbar-inner">
-			<a href="#tab1" class="tab-link active">Редактор</a>
-			<a href="#tab2" id="bpari" class="tab-link">Проект</a>
-			<a href="#tab3" id="bzvonki" class="tab-link">Файлы</a>
-		  </div>
-		</div>
-		<!--div class="toolbar toolbar-bottom hides" id="project-bar">
+	<div class="view view-main">
+		<div ontouchmove="return true;" class="pages navbar-fixed">
+			<div data-page="project" class="page toolbar-fixed">
+				<div class="hides">
+					<div class="navbar">
+						<div class="navbar-inner hides">
+							<div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+							<div id="title" onclick="alert();">{Project name}</div>
+						</div>
+					</div>
+				</div>
+				<div class="toolbar hides tabbar">
+					<div class="toolbar-inner">
+						<a href="#tab1" class="tab-link active">Редактор</a>
+						<a href="#tab2" id="bpari" class="tab-link">Проект</a>
+						<a href="#tab3" id="bzvonki" class="tab-link">Файлы</a>
+					</div>
+				</div>
+				<!--div class="toolbar toolbar-bottom hides" id="project-bar">
 		<div class="toolbar-inner">
 		<a href="#tab-1" class="link open-oper-picker"><i class="icon icon-pencil"></i></a>
 		<a href="#tab-2" class="link"><i class="icon icon-save"></i></a>
 		<!--<a href="#tab-3" class="link"><i class="icon ks-icon-upload"></i></a>-->
-		<!--<a href="#tab-1" class="link">Text Link</a>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--Float-->
-		<!--a href="#" onclick="App.toggleBar();" class="floating-button color-bluegray"><i id="project-float-img" class="icon icon-minus"></i></a-->
-		<a href="#" onclick="Keyboard.toggle();" class="floating-button color-bluegray"><i id="project-float-img" class="icon icon-minus"></i></a>
-		
-		<div class="tabs-swipeable-wrap">
-		  <div class="tabs">
-			<div id="tab1" class="page-content tab active">
-			  <div class="content-block-title"></div>
-			  <div style="margin-top:-8%;" class="content-block">
-				<textarea style="width:100%;height:10vh;" class="code" name="code" id="code"></textarea>				
+				<!--<a href="#tab-1" class="link">Text Link</a>-->
+				<!--</div>-->
+				<!--</div>-->
+				<!--Float-->
+				<!--a href="#" onclick="App.toggleBar();" class="floating-button color-bluegray"><i id="project-float-img" class="icon icon-minus"></i></a-->
+				<a href="#" onclick="Keyboard.toggle();" class="floating-button color-bluegray"><i id="project-float-img" class="icon icon-minus"></i></a>
 
-			  </div>
-			</div>
-			<div id="tab2" class="page-content tab">
-			  <div class="content-block">
-				<div style="margin-top:-8%;" class="list-block">
-				  <ul>
-					<li>
-					  <div class="item-content">
-						<div class="item-media"><i class="icon icon-form-name"></i></div>
-						<div class="item-inner"> 
-						  <div class="item-title label">Название проекта</div>
-						  <div class="item-input">
-							<input type="text" class="psettingsinput" placeholder="Название проекта" id="pname"/>
-						  </div>
+				<div class="tabs-swipeable-wrap">
+					<div class="tabs">
+						<div id="tab1" class="page-content tab active">
+							<div class="content-block-title"></div>
+							<div style="margin-top:-8%;" class="content-block">
+								<textarea style="width:100%;height:10vh;" class="code" name="code" id="code"></textarea>
+
+							</div>
 						</div>
-					  </div>
-					</li>
-					<li></li>
-					<li>
-					  <div class="item-content">
-						<div class="item-media"><i class="icon icon-form-name"></i></div>
-						<div class="item-inner"> 
-						  <div class="item-title label">Описание проекта</div>
-						  <div class="item-input">
-							<input type="text" class="psettingsinput" placeholder="Описание проекта" id="pdesc"/>
-						  </div>
+						<div id="tab2" class="page-content tab">
+							<div class="content-block">
+								<div style="margin-top:-8%;" class="list-block">
+									<ul>
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-name"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Название проекта</div>
+													<div class="item-input">
+														<input type="text" class="psettingsinput" placeholder="Название проекта" id="pname" />
+													</div>
+												</div>
+											</div>
+										</li>
+										<li></li>
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-name"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Описание проекта</div>
+													<div class="item-input">
+														<input type="text" class="psettingsinput" placeholder="Описание проекта" id="pdesc" />
+													</div>
+												</div>
+											</div>
+										</li>
+										<li></li>
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-name"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Версия проекта</div>
+													<div class="item-input">
+														<input type="text" class="psettingsinput" placeholder="Версия проекта" id="pver" />
+													</div>
+												</div>
+											</div>
+										</li>
+										<li></li>
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-name"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Автор проекта</div>
+													<div class="item-input">
+														<input type="text" class="psettingsinput" placeholder="Автор проекта" id="pauth" />
+													</div>
+												</div>
+											</div>
+										</li>
+										<li></li>
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-name"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Страничка проекта</div>
+													<div class="item-input">
+														<input type="text" class="psettingsinput" placeholder="Страничка автора" id="purl" />
+													</div>
+												</div>
+											</div>
+										</li>
+										<li><a href="#" onclick="Project.Settings.save()" class="button button-raised item-link">Применить</a></li>
+									</ul>
+								</div>
+								<br/><br/>
+							</div>
 						</div>
-					  </div>
-					</li>
-					<li></li>
-					<li>
-					  <div class="item-content">
-						<div class="item-media"><i class="icon icon-form-name"></i></div>
-						<div class="item-inner"> 
-						  <div class="item-title label">Версия проекта</div>
-						  <div class="item-input">
-							<input type="text" class="psettingsinput" placeholder="Версия проекта" id="pver"/>
-						  </div>
+						<div id="tab3" class="page-content tab">
+							<div class="content-block" style="margin-top:-8%;">
+								<div class="content-block-title">Файлы проекта:</div>
+								<div class="list-block">
+									<ul id="filelist">
+										<li>
+											<a href="#" class="item-link" onclick="Project.file.check(this)">
+												<div class="item-content">
+													<div class="item-media"><i class="icon icon-file"></i></div>
+													<div class="item-inner">
+														<div class="item-title checked">Autorun.bas</div>
+													</div>
+												</div>
+											</a>
+										</li>
+									</ul>
+									<a href="#" class="button button-raised item-link" onclick="Project.Files.New()">Новый файл</a>
+								</div>
+								<br/><br/>
+							</div>
 						</div>
-					  </div>
-					</li>
-					<li></li>
-					<li>
-					  <div class="item-content">
-						<div class="item-media"><i class="icon icon-form-name"></i></div>
-						<div class="item-inner"> 
-						  <div class="item-title label">Автор проекта</div>
-						  <div class="item-input">
-							<input type="text" class="psettingsinput" placeholder="Автор проекта" id="pauth"/>
-						  </div>
-						</div>
-					  </div>
-					</li>
-					<li></li>
-					<li>
-					  <div class="item-content">
-						<div class="item-media"><i class="icon icon-form-name"></i></div>
-						<div class="item-inner"> 
-						  <div class="item-title label">Страничка проекта</div>
-						  <div class="item-input">
-							<input type="text" class="psettingsinput" placeholder="Страничка автора" id="purl"/>
-						  </div>
-						</div>
-					  </div>
-					</li>
-					<li><a href="#" onclick="Project.Settings.save()" class="button button-raised item-link">Применить</a></li>
-				  </ul>
+					</div>
+					<!--Tabs-->
 				</div>
-				<br/><br/>
-			  </div>
+				<!--Swipe Wrap-->
 			</div>
-			<div id="tab3" class="page-content tab">
-			  <div class="content-block" style="margin-top:-8%;">
-				<div class="content-block-title">Файлы проекта:</div>
-				<div class="list-block">
-				  <ul id="filelist">
-					<li><a href="#" class="item-link" onclick="Project.file.check(this)">
-						<div class="item-content">
-						  <div class="item-media"><i class="icon icon-file"></i></div>
-						  <div class="item-inner"> 
-							<div class="item-title checked">Autorun.bas</div>
-						  </div>
-						</div>
-					  </a></li>
-				  </ul>
-				  <a href="#" class="button button-raised item-link" onclick="Project.Files._new()">Новый файл</a>
-				</div>
-				<br/><br/>
-			  </div>
-			</div>
-		  </div><!--Tabs-->
-		</div><!--Swipe Wrap-->
-	  </div><!--Tabs Swipeable-->
-	</div><!--Pages navbar-->
-  </div><!--View-Main-->
-</div><!--Views-->
+			<!--Tabs Swipeable-->
+		</div>
+		<!--Pages navbar-->
+	</div>
+	<!--View-Main-->
+</div>
+<!--Views-->
 
 <div class="popover popover-menu">
-  <div class="popover-inner">
-	<div class="list-block">
-	  <ul>
-		<li><a href="#" data-popup=".console-popup" class="list-button item-link close-popover">onMouseDown(x,y)</a></li>
-	  </ul>
+	<div class="popover-inner">
+		<div class="list-block">
+			<ul>
+				<li><a href="#" data-popup=".console-popup" class="list-button item-link close-popover">onMouseDown(x,y)</a></li>
+			</ul>
+		</div>
 	</div>
-  </div>
 </div>

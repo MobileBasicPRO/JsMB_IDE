@@ -1,12 +1,14 @@
 var $IDE = {
-	version: '1.1',
-	projectName: 'project1',//Дефолтное имя проекта
-	projectFile: 'project1.mbp',//Дефолтное имя файла проекта
-	devCounter: 0,//Счётчик нажатий "куда надо"
-	devBuild: true,//Показать консоль отладки
-	debugFunction: function () { alert('test'); },
-	JsMB_version: "Alpha 10.1"//$JsMobileBasic.version //Версия билда JsMB
-},
+		version: '1.1',
+		projectName: 'project1', //Дефолтное имя проекта
+		projectFile: 'project1.mbp', //Дефолтное имя файла проекта
+		devCounter: 0, //Счётчик нажатий "куда надо"
+		devBuild: true, //Показать консоль отладки
+		debugFunction: function () {
+			alert('test');
+		},
+		JsMB_version: "Alpha 10.1" //$JsMobileBasic.version //Версия билда JsMB
+	},
 	//Объектное представление файла проекта
 	$Project = {
 		name: $IDE.projectName,
@@ -18,7 +20,7 @@ var $IDE = {
 			"Autorun.bas": "// * ==================JsMobileBasic Script================= * \\\\"//Главный файл
 			/* Формат: "${file}":"${data}"*/
 		},
-		JsMB_version: $IDE.JsMB_version//Версия JsMB при создании проекта
+		JsMB_version: $IDE.JsMB_version //Версия JsMB при создании проекта
 	};
 
 
@@ -149,7 +151,7 @@ $$$.onPageInit('project', function (page) {
 
 var App = {
 	about: function () {
-		alert('JsMobileBasic IDE <br/>' +/*/device.platform+/*/'<br/>version: ' + $IDE.version + '<br/>by PROPHESSOR');
+		alert('JsMobileBasic IDE <br/>' + /*/device.platform+/*/ '<br/>version: ' + $IDE.version + '<br/>by PROPHESSOR');
 	},
 	exit: function () {
 		$$$.confirm('Подтвердите выход', function () {
@@ -171,14 +173,12 @@ var App = {
 
 var Keyboard = {
 	_state: false,
-
 	init: function() {
 		$(".kbbtn").on("click", function() {
 			var id = $(this).data("keyid");
 			Keyboard.key(id);
 		});
 	},
-
 	toggle: function () {
 		log("Keyboard=>Toggle");
 		this._state = !this._state;
@@ -205,7 +205,7 @@ var Project = {
 	_opened: false,
 	_current_file: "Autorun.bas",
 
-	_new: function () {//Создание из меню
+	New: function () { //Создание из меню
 		$$$.prompt('Введите имя проекта (только латиница)', function (filename) {
 			if (filename !== '') {
 				$IDE.project = filename;
@@ -221,7 +221,7 @@ var Project = {
 			}
 		});
 	},
-	load: function () {//Открытие из меню
+	load: function () { //Открытие из меню
 		$$$.prompt('Введите имя проекта (только латиница)', function (filename) {
 			if (filename !== '') {
 				$IDE.project = filename;
@@ -237,7 +237,7 @@ var Project = {
 		});
 
 	},
-	open: function () {//Открытие файла проекта
+	open: function () { //Открытие файла проекта
 		function callback() {
 			log('<yellow>Callback!</yellow>');
 			$Project = FileAPI.output.json;
@@ -247,7 +247,7 @@ var Project = {
 		FileAPI.readFile($IDE.projectFile);
 		log('<orange>Waiting for callback...</orange>');
 	},
-	save: function () {//Сохранение файла проекта
+	save: function () { //Сохранение файла проекта
 		var project = toJSON($Project);
 		FileAPI.writeFile($IDE.projectFile, project);
 		info('Проект успешно сохранён!');
@@ -280,8 +280,8 @@ var Project = {
 			log('$Project: ' + toJSON($Project));
 		}
 	},
-	Files: {// 3 Вкладка управления проектом
-		_new: function (file) {
+	Files: { // 3 Вкладка управления проектом
+		New: function (file) {
 			if (typeof file === "undefined") {
 				$$$.prompt('Введите имя файла (только имя)', function (e) {
 					if (e != '') {
@@ -357,7 +357,8 @@ function doc() {
 	iab.addEventListener('exit', function () {
 		window.location.hash = '#main';
 	});
-}/*
+}
+/*
 
 function showSplash(mode){
 	mode ? navigator.splashscreen.show() : navigator.splashscreen.hide();
