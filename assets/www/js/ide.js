@@ -17,7 +17,7 @@ var $IDE = {
 		description: 'Test project',
 		url: 'vk.com/JsMobileBasic',
 		files: {
-			"Autorun.bas": "// * ==================JsMobileBasic Script================= * \\\\"//Главный файл
+			"Autorun.bas": "// * ==================JsMobileBasic Script================= * \\\\" //Главный файл
 			/* Формат: "${file}":"${data}"*/
 		},
 		JsMB_version: $IDE.JsMB_version //Версия JsMB при создании проекта
@@ -50,6 +50,8 @@ $$$.onPageInit('project', function (page) {
 		mode: "text/javascript"
 	});
 	editor.setOption("theme", "3024-night");*/
+
+	Keyboard.init();
 
 	$$('#title').html($Project.name);
 	$$('#pname').val($Project.name);
@@ -133,7 +135,7 @@ $$$.onPageInit('project', function (page) {
 	// console.error = log;
 	// window.onerror = log;
 	//log = console.log;
-	var logError = log;
+	window.logError = log;
 }
 
 //Для нативных функций, пока не иммет смысла
@@ -150,6 +152,12 @@ $$$.onPageInit('project', function (page) {
 };*/
 
 var App = {
+	cordova: !!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/),
+
+	init: function () {
+		if(!this.cordova) this.ready();
+	},
+	ready: function () {},
 	about: function () {
 		alert('JsMobileBasic IDE <br/>' + /*/device.platform+/*/ '<br/>version: ' + $IDE.version + '<br/>by PROPHESSOR');
 	},
@@ -173,8 +181,8 @@ var App = {
 
 var Keyboard = {
 	_state: false,
-	init: function() {
-		$(".kbbtn").on("click", function() {
+	init: function () {
+		$(".kbbtn").on("click", function () {
 			var id = $(this).data("keyid");
 			Keyboard.key(id);
 		});
@@ -187,14 +195,14 @@ var Keyboard = {
 
 	key: function (key) {
 		//TODO: Распознавания нажатия клавиш
-		switch(key) {
+		switch (key) {
 			case "var":
 				Keyboard.put("var ");
-			break;
+				break;
 		}
 	},
 
-	put:function(text){
+	put: function (text) {
 		$("#code").append(text);
 	}
 };

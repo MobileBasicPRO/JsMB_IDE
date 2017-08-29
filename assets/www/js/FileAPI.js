@@ -44,21 +44,21 @@ var FileAPI = {
 readFile: function(file,selector){
 	try{
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-		logError('Файловая система');
+		log('Файловая система');
 		FileAPI.fileSystem = fileSystem;
         fileSystem.root.getFile(file, {create: false, exclusive: false}, function(fileEntry){
-			logError('FileEntry');
+			log('FileEntry');
 			FileAPI.fileEntry = fileEntry;
         	fileEntry.file(function (files){
-				logError('Got file');
+				log('Got file');
 				FileAPI.file = file;
 				FileAPI.files = files;
        			//DataUrl
-					logError('readDataUrl');
+					log('readDataUrl');
         			var reader = new FileReader();
         			reader.onload = function(evt) {
-            			logError("Read as data URL");
-            			logError(evt.target.result);
+            			log("Read as data URL");
+            			log(evt.target.result);
 						FileAPI.output.base64 = evt.target.result;
 						if(selector){
 							$(selector).html(evt.target.result);
@@ -66,11 +66,11 @@ readFile: function(file,selector){
         			};
         			reader.readAsDataURL(files);//
         		//readAsText			
-					logError('readAsText');
+					log('readAsText');
         			var reader = new FileReader();
         			reader.onload = function(evt) {
-            			logError("Read as text");
-            			logError(evt.target.result);	
+            			log("Read as text");
+            			log(evt.target.result);	
 						FileAPI.output.text = evt.target.result;
 						FileAPI.output.json = parseJSON(evt.target.result);
 						if(selector){
@@ -79,7 +79,7 @@ readFile: function(file,selector){
 						ploadCallback();
         			};
         			reader.readAsText(files);
-					logError('<green>Конец загрузки файла!</green>');
+					log('<green>Конец загрузки файла!</green>');
 			}, fail);
 		}, fail);
 	}, fail);
@@ -88,7 +88,7 @@ readFile: function(file,selector){
         console.log('Ошибка доступа к файлу! Код:'+parseJSON(evt));
     }
 }catch(e){
-	logError('Ошибка в функции FileAPI.readFile! Ошибка: '+e);
+	log('Ошибка в функции FileAPI.readFile! Ошибка: '+e);
 }
 },//
 
@@ -161,10 +161,10 @@ readFile: function(file,selector){
 	}
 
 };
-logError('</red><green>File API успешно загружен!</green><red>');
+log('</red><green>File API успешно загружен!</green><red>');
 }catch(e){
 //	alert(e);
-	logError(e);
+	log(e);
 };
 
-showAlert = logError;
+showAlert = log;
