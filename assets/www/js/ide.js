@@ -61,12 +61,11 @@ $$$.onPageInit('project', function (page) {
 
 //Функции для замены и удобства
 {
-	function alert(text) {
-		$$$.alert(text);
-	}
+	window.alert = $$$.alert;
 
 	function log(text) {
-		$$('#console')[0].innerHTML += "# " + text + '<br/>';
+		$$('#console').append("# " + text + '<br/>');
+		return text;
 	}
 
 	function info(text) {
@@ -131,7 +130,7 @@ $$$.onPageInit('project', function (page) {
 	// console.log = log;
 	// console.error = log;
 	// window.onerror = log;
-	log = console.log;
+	//log = console.log;
 	var logError = log;
 }
 
@@ -170,6 +169,19 @@ var App = {
 	}
 };
 
+var Keyboard = {
+	_state: false,
+	
+	toggle:function(){
+		log("Keyboard=>Toggle");
+		this._state = !this._state;
+		$$$.pickerModal('.keyboard-modal');
+	},
+	
+	key:function(key){
+		//TODO: Распознавания нажатия клавиш
+	}
+};
 
 //Работа с проектом
 var Project = {
@@ -177,7 +189,7 @@ var Project = {
 	_opened: false,
 	_current_file: "Autorun.bas",
 
-	new: function () {//Создание из меню
+	_new: function () {//Создание из меню
 		$$$.prompt('Введите имя проекта (только латиница)', function (filename) {
 			if (filename !== '') {
 				$IDE.project = filename;
@@ -253,7 +265,7 @@ var Project = {
 		}
 	},
 	Files: {// 3 Вкладка управления проектом
-		new: function (file) {
+		_new: function (file) {
 			if (typeof file === "undefined") {
 				$$$.prompt('Введите имя файла (только имя)', function (e) {
 					if (e != '') {

@@ -94,7 +94,7 @@
 						</div>
 					  </div>
 					</a></li>
-				  <li><a href="#" onClick="Project.new()" id="newProject" class="item-link">
+				  <li><a href="#" onClick="Project._new()" id="newProject" class="item-link">
 					  <div class="item-content">
                         <div class="item-media"><i class="icon icon-file"></i></div>
                         <div class="item-inner">
@@ -157,9 +157,9 @@
             </div>
             <div class="page-content">
               <div class="content-block">
-				<div id="console"></div><p><br/></p>
+				<div id="console">#===JsMobileBasic IDE===#<br/></div><p><br/></p>
 				<input type="text" id="consoleinput" autofocus placeholder="Eval" style="position:absolute;bottom:38px;width:100%;"/>
-				<a href="#" type="submit" style="position:fixed;bottom:0; width:100%;" class="button button-raised" onclick="t = 'consoleinput';log('$<blue>'+document.getElementById(t).value+'</blue>');eval(document.getElementById('consoleinput').value)">Выполнить</a>
+				<button style="position:fixed;bottom:0; width:100%;" class="button button-raised" onclick="log('$<blue>'+$$('#consoleinput').val()+'</blue>');try{log(eval($$('#consoleinput').val()));}catch(e){log(e);}">Выполнить</button>
               </div>
             </div>
           </div>
@@ -210,7 +210,7 @@
 		</div>
       </div>
     </div>
-	
+<!--+ menu-->	
     <div class="popover popover-menu">
       <div class="popover-inner">
         <div class="list-block">
@@ -220,6 +220,62 @@
         </div>
       </div>
     </div>
+	
+<!--keyboard-->
+	<div class="picker-modal keyboard-modal">
+    	<div class="toolbar">
+        	<div class="toolbar-inner">
+        		<div class="left"></div>
+        		<div class="right"><a href="#" class="link close-picker">Закрыть</a></div>
+    		</div>
+      	</div>
+	    <div class="picker-modal-inner">
+    		<div class="content-block row">
+				<div class="kb-b col-33 row">
+					<div class="col-33">
+						<div class="kb-v button button-raised button-fill color-gray">0</div>
+						<div class="kb-v button button-raised button-fill color-gray">1</div>
+						<div class="kb-v button button-raised button-fill color-gray">2</div>
+						<div class="kb-v button button-raised button-fill color-gray">3</div>
+						<div class="kb-v button button-raised button-fill color-blue">...</div>
+					</div>
+					<div class="col-66">
+						<div class="kb-v button button-raised button-fill color-blue">Variable</div>
+						<div class="kb-v button button-raised button-fill color-blue">Function</div>
+						<div class="kb-v button button-raised button-fill color-blue">IF</div>
+						<div class="kb-v button button-raised button-fill color-blue">Loop</div>
+						<div class="kb-v button button-raised button-fill color-blue">...</div>
+					</div>
+				</div>
+				<div class="kb-b col-33 row">
+					<div class="col-66">
+						<div class="kb-v button button-raised button-fill color-gray">←</div>
+						<div class="kb-v button button-raised button-fill color-gray">√</div>
+						<div class="kb-v button button-raised button-fill color-gray">↓</div>
+					</div>
+					<div class="col-33">
+						<div class="kb-v button button-raised button-fill color-red">!</div>
+						<div class="kb-v button button-raised button-fill color-red">[</div>
+						<div class="kb-v button button-raised button-fill color-red">{</div>
+						<div class="kb-v button button-raised button-fill color-red">(</div>
+						<div class="kb-v button button-raised button-fill color-blue">...</div>
+					</div>
+				</div>
+				<div class="kb-b col-33 row">
+					<div class="col-66">
+						<div style="height:100%;" class="kb-v button button-raised button-fill color-gray">←</div>
+						<!--div class="kb-v button button-raised button-fill color-gray">√</div>
+						<div class="kb-v button button-raised button-fill color-gray">↓</div-->
+					</div>
+				<div class="col-33">
+					<div class="kb-v button button-big button-raised button-fill color-gray">Backspace</div>
+					<div class="kb-v button button-big button-raised button-fill color-gray">Enter</div>
+					<!--div class="kb-v button button-big button-raised button-fill color-gray">↓</div-->
+					</div>
+				</div>
+			</div>
+	    </div>
+	</div>
 	
     <script type="text/javascript" src="js/framework7.js"></script>
 	<script type="text/javascript" src="js/cordova.js"></script>

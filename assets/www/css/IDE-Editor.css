@@ -26,6 +26,22 @@ html{
   color:yellow;
   font-weight:bold;
 }
+
+/* Keyboard */
+.kb-v{ /* Vertical block */
+  float: left;
+  /*background:blue;*/
+  text-align:center;
+  width: 100%;
+  width: -webkit-calc((100% - 16px*0) / 1);
+  width: calc((100% - 16px*0) / 1);
+  border: 1px solid White;
+}
+
+.kb-b{/* Blocks (3) */
+  /*background:green;*/
+}
+
 /* Разноцветные теги =D */
 red{
   color:red;
