@@ -15,7 +15,7 @@ var $IDE = {
 		description: 'Test project',
 		url: 'vk.com/JsMobileBasic',
 		files: {
-			"Autorun.bas": "// * ==================JsMobileBasic Script================= * \\"//Главный файл
+			"Autorun.bas": "// * ==================JsMobileBasic Script================= * \\\\"//Главный файл
 			/* Формат: "${file}":"${data}"*/
 		},
 		JsMB_version: $IDE.JsMB_version//Версия JsMB при создании проекта
