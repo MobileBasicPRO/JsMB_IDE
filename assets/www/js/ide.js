@@ -103,7 +103,7 @@ $$$.onPageInit('project', function (page) {
 	}
 
 	function soon() {
-		alert('К сожалению данная возможность недоступна в версии' + $IDE.version + '...<br/> Зайдите в группу vk.com/JsMobileBasic для проверки обновлений ;)');
+		alert('К сожалению данная возможность недоступна в версии ' + $IDE.version + '...<br/> Зайдите в группу vk.com/JsMobileBasic для проверки обновлений ;)');
 	};
 
 	function toJSON(object) {
@@ -137,19 +137,6 @@ $$$.onPageInit('project', function (page) {
 	//log = console.log;
 	window.logError = log;
 }
-
-//Для нативных функций, пока не иммет смысла
-
-/*var $Native = {
-	print: function (msg) {
-		cordova.exec(this.onSuccess, this.onFail, "Toast", "nativeAction", [msg]);
-	},
-	onSuccess: function (result) {
-	},
-	onFail: function (error) {
-		error(error);
-	}
-};*/
 
 var App = {
 	cordova: !!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/),
