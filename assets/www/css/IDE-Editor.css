@@ -42,6 +42,13 @@ html{
   /*background:green;*/
 }
 
+.kb-o{/* Scroll */
+	position:relative;
+	overflow-x: auto;
+	/*width:12500px;*/
+	background-color:red;
+}
+
 /* Разноцветные теги =D */
 red{
   color:red;
