@@ -25,7 +25,7 @@ var $IDE = {
 
 
 var $$$ = new Framework7({
-	modalTitle: 'JsMobileBasic-IDE',
+	modalTitle: 'JsMobileBasic IDE',
 	material: true,
 });
 var $$ = Dom7;
@@ -77,7 +77,7 @@ $$$.onPageInit('project', function (page) {
 			message: '<blue>' + text + '</blue>',
 			button: {
 				text: 'Закрыть',
-				//                color: 'yellow'
+				//color: 'yellow'
 			}
 		});
 	}
@@ -87,7 +87,7 @@ $$$.onPageInit('project', function (page) {
 			message: '<red>Ошибка: ' + text + '</red>',
 			button: {
 				text: 'Закрыть',
-				//                color: 'yellow'
+				//color: 'yellow'
 			}
 		});
 	}
@@ -97,7 +97,7 @@ $$$.onPageInit('project', function (page) {
 			message: '<yellow>Предуприждение: ' + text + '</yellow>',
 			button: {
 				text: 'Закрыть',
-				//                color: 'yellow'
+				//color: 'yellow'
 			}
 		});
 	}
@@ -154,6 +154,7 @@ var App = {
 	exit: function () {
 		$$$.confirm('Подтвердите выход', function () {
 			window.close();
+			navigator.app.exitApp()
 		});
 	},
 	toggleBar: function () {
