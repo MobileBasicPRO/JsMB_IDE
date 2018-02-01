@@ -8,9 +8,9 @@ var $IDE = {
 			alert('test');
 		},
 		JsMB_version: "Alpha 10.1" //$JsMobileBasic.version //Версия билда JsMB
-	},
+	};
 	//Объектное представление файла проекта
-	$Project = {
+var $Project = {
 		name: $IDE.projectName,
 		author: 'MobileBasicPRO',
 		version: '1.0',
@@ -36,22 +36,23 @@ var mainView = $$$.addView('.view-main', {
 
 //Рендер страницы проекта
 $$$.onPageInit('project', function (page) {
-	Project._opened = true;
+	project._opened = true;
 	$$('#return-project').show();
 	$$('.open-oper-picker').on('click', function () {
 		$$$.pickerModal('.oper-picker');
 	});
 
-	/*var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
 		lineNumbers: true,
 		autoCloseBrackets: true,
 		styleActiveLine: true,
 		matchBrackets: true,
 		mode: "text/javascript"
 	});
-	editor.setOption("theme", "3024-night");*/
+	editor.setOption("theme", "3024-night");
+	editor.setSize(innerWidth-35, innerHeight-100);
 
-	Keyboard.init();
+//	Keyboard.init();
 
 	$$('#title').html($Project.name);
 	$$('#pname').val($Project.name);
@@ -59,8 +60,8 @@ $$$.onPageInit('project', function (page) {
 	$$('#pauth').val($Project.author);
 	$$('#pdesc').val($Project.description);
 	$$('#purl').val($Project.url);
-	Project.Files.loadList();
-	Project._current_file = "Autorun.bas";
+	project.Files.loadList();
+	project._current_file = "Autorun.bas";
 });
 
 //Функции для замены и удобства
@@ -153,8 +154,8 @@ var App = {
 	},
 	exit: function () {
 		$$$.confirm('Подтвердите выход', function () {
+			navigator.app.exitApp();
 			window.close();
-			navigator.app.exitApp()
 		});
 	},
 	toggleBar: function () {
@@ -199,7 +200,7 @@ var Keyboard = {
 };
 
 //Работа с проектом
-var Project = {
+var project = {
 	_bar: 1,
 	_opened: false,
 	_current_file: "Autorun.bas",
@@ -213,7 +214,7 @@ var Project = {
 				mainView.loadPage('project.html');
 				$$('#title').html($Project.name);
 				$$('#pname').val($Project.name);
-				Project.save();
+				project.save();
 				return true;
 			} else {
 				return false;
@@ -225,7 +226,7 @@ var Project = {
 			if (filename !== '') {
 				$IDE.project = filename;
 				$IDE.projectFile = filename + '.mbp';
-				Project.open();
+				project.open();
 				mainView.loadPage('project.html');
 				$$('#title').html($Project.name);
 				$$('#pname').val($Project.name);
@@ -240,7 +241,7 @@ var Project = {
 		function callback() {
 			log('<yellow>Callback!</yellow>');
 			$Project = FileAPI.output.json;
-			Project.Settings.load();
+			project.Settings.load();
 		}
 		logError('pload ' + $IDE.projectFile);
 		FileAPI.readFile($IDE.projectFile);
@@ -265,7 +266,7 @@ var Project = {
 			$Project.version = pver;
 			$Project.url = purl;
 			$Project.autorun = pcode;
-			Project.save();
+			project.save();
 			info('Проект успешно сохранён!');
 		},
 		load: function () {
@@ -294,15 +295,15 @@ var Project = {
 			}
 		},
 		open: function () {
-			$$('#code').val($Project.files[Project._current_file]);
+			$$('#code').val($Project.files[project._current_file]);
 		},
 		save: function () {
-			$Project.files[Project._current_file] = $$('#code').val();
-			Project.save();
+			$Project.files[project._current_file] = $$('#code').val();
+			project.save();
 		},
 		check: function (el) {
 			var file = el.getElementsByClassName('item-title')[0];
-			Project._current_file = file.innerHTML;
+			project._current_file = file.innerHTML;
 			var li = el.parentNode.parentNode.getElementsByClassName('item-title');
 			log(li.innerHTML);
 			for (i in li) {
@@ -330,32 +331,20 @@ function Loop(){\n    //Этот код выполняется в цикле\n}'
 	}
 };
 
-//Не помню зачем, но это, наверно, надо =)
-
-/*function package_json() {
-	var tmp = {
-		author: $Project.author
-	};
-	var json = toJSON(tmp);
-	FileAPI.writeFile("package.json", json);
-}*/
-
 /*
 // Менеджер проекта
 
 */
 function doc() {
-	iab = window.open('http://vk.com/JsMobileBasic', '_blank ', 'location = yes,zoom=no');
-	//iab.addEventListener('loadstart', loadStart);
-	//iab.addEventListener('loadstop', loadStop);
-	iab.addEventListener('loaderror', function () {
+	var iab = window.open('http://vk.com/JsMobileBasic', '_blank ', 'location = no,zoom=no');
+	/*iab.addEventListener('loaderror', function () {
 		logError('Ошибка сети! <yellow>Принимаю меры безопасности против вылета IDE!</yellow>');
 		alert('Возникла ошибка сети при загрузке документации!\nПроверте ваше сетевое подключение.', '', 'Ошибка сети', 'Назад');
 		window.location.hash = '#main';
 	});
 	iab.addEventListener('exit', function () {
 		window.location.hash = '#main';
-	});
+	});*/
 }
 
 

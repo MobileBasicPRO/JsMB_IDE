@@ -27,6 +27,11 @@ html{
   font-weight:bold;
 }
 
+#tab1, #tab1 div {
+	padding-left: 0 !important;
+	margin-top: -4%;
+}
+
 /* Keyboard */
 .kb-v{ /* Vertical block */
   float: left;
